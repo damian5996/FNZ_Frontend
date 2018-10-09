@@ -1,0 +1,102 @@
+<div ng-cloak layout="column">
+    <!--<pre ng-bind="allPostsCtrl.allPosts | json"></pre>-->
+    <!--<pre ng-bind="allPostsCtrl.currentPage | json"></pre>-->
+    <!--<pre ng-bind="allPostsCtrl.totalPageCount | json"></pre>-->
+    <!--<pre ng-bind="allPostsCtrl.singlePost | json"></pre>-->
+    <div layout="row">
+    <md-card flex>
+        <md-card-content>
+            <md-input-container>
+                <label>Posortuj według</label>
+                <md-select ng-model="allPostsCtrl.data.sort" ng-change="allPostsCtrl.getPosts()">
+                    <md-option value="Title">Tytuł</md-option>
+                    <md-option value="Content">Treść</md-option>
+                    <md-option value="AddedAt">Data dodania</md-option>
+                    <md-option value="Author">Autor</md-option>
+                </md-select>
+            </md-input-container>
+            <!--<md-input-container>-->
+                <!--<label>Sortuj</label>-->
+                <!--<md-select ng-model="allPostsCtrl.data.ascending">-->
+                    <!--<md-option value="true">Rosnąco</md-option>-->
+                    <!--<md-option value="false">Malejąco</md-option>-->
+                <!--</md-select>-->
+            <!--</md-input-container>-->
+        </md-card-content>
+    </md-card>
+        <md-card flex>
+            <md-card-content >
+                <md-input-container>
+                    <label>Szukaj</label>
+                    <input ng-keypress="allPostsCtrl.isEnterPressed($event)" ng-model="allPostsCtrl.data.query">
+                    <md-button ng-click="allPostsCtrl.getPosts()">Szukaj</md-button>
+                </md-input-container>
+            </md-card-content>
+
+        </md-card>
+        <md-card flex>
+            <md-card-content >
+                <md-input-container>
+                    <label>Sortuj</label>
+                    <md-select ng-model="allPostsCtrl.data.ascending" ng-change="allPostsCtrl.getPosts()">
+                        <md-option value="true">Rosnąco</md-option>
+                        <md-option value="false">Malejąco</md-option>
+                    </md-select>
+                </md-input-container>
+            </md-card-content>
+
+        </md-card>
+    </div>
+    <button onclick="location.href='#!/addPost'" type="button" class="btn btn-primary btn-block">Dodaj post</button>
+    <!--<div ng-repeat="singlePost in allPostsCtrl.allPosts | orderBy: allPostsCtrl.data.sort : allPostsCtrl.data.ascending-->
+        <!--| filter:allPostsCtrl.query">-->
+        <div ng-repeat="singlePost in allPostsCtrl.allPosts">
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline" ng-bind="singlePost.title"></span>
+                    <span class="md-subhead" ng-bind-html="'Dodany przez: ' + singlePost.author"></span>
+                    <span class="md-subhead" ng-bind="singlePost.addedAt |  date : 'dd/MM/yyyy HH:mm:ss'"></span>
+                    <span class="md-subhead edited" ng-if="singlePost.editedAt != null"
+                          ng-bind-html=" 'Ostatnia edycja: ' + (singlePost.editedAt |  date : 'dd/MM/yyyy HH:mm:ss')
+         + ' przez ' + (singlePost.editedBy)"></span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content layout="row" layout-align="space-between">
+                <div class="md-media-xl card-media col-4">
+                    <img ng-if="singlePost.photoPath != null" class="postPhoto" ng-src="{{allPostsCtrl.getPhotoPath(singlePost)}}">
+                </div>
+                <div class="content col-8" ng-bind="singlePost.content"></div>
+                <!--<md-card-actions layout="column">-->
+                <!--<md-button class="md-icon-button" aria-label="Favorite">-->
+                <!--<md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>-->
+                <!--</md-button>-->
+                <!--<md-button class="md-icon-button" aria-label="Settings">-->
+                <!--<md-icon md-svg-icon="img/icons/menu.svg"></md-icon>-->
+                <!--</md-button>-->
+                <!--<md-button class="md-icon-button" aria-label="Share">-->
+                <!--<md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>-->
+                <!--</md-button>-->
+                <!--</md-card-actions>-->
+            </md-card-content>
+        </md-card>
+    </div>
+    <!--<div ng-repeat="singlePost in allPostsCtrl.allPosts | orderBy: allPostsCtrl.sort : allPostsCtrl.ascending-->
+    <!--| filter:allPostsCtrl.query" class="post">-->
+    <!--<pre>{{allPostsCtrl.ascending}}</pre>-->
+    <!--<div ng-bind="singlePost.title"></div>-->
+    <!--<div ng-bind="singlePost.author"></div>-->
+    <!--&lt;!&ndash;<div ng-if="postCtrl.singlePost.editedAt != null && postCtrl.singlePost.editedBy != null"&ndash;&gt;-->
+    <!--&lt;!&ndash;ng-bind-html=" 'Edited at ' + (postCtrl.singlePost.editedAt |  date : 'dd/MM/yyyy HH:mm:ss')&ndash;&gt;-->
+    <!--&lt;!&ndash;+ ' by ' + (postCtrl.singlePost.editedBy)"></div>&ndash;&gt;-->
+    <!--<div ng-if="singlePost.editedAt != null"-->
+    <!--ng-bind-html=" 'Edited at ' + (singlePost.editedAt |  date : 'dd/MM/yyyy HH:mm:ss')-->
+    <!--+ ' by ' + (singlePost.editedBy)"></div>-->
+    <!--<div ng-bind="singlePost.addedAt |  date : 'dd/MM/yyyy HH:mm:ss'"></div>-->
+    <!--<div>-->
+    <!--<img ng-if="singlePost.photoPath != null" class="postPhoto"-->
+    <!--ng-src="{{allPostsCtrl.getPhotoPath(singlePost)}}">-->
+    <!--<div class="content" ng-bind="singlePost.content"></div>-->
+    <!--</div>-->
+    <!--</div>-->
+</div>

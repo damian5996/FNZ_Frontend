@@ -1,0 +1,29 @@
+<md-card>
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline" ng-bind="postCtrl.singlePost.title"></span>
+            <span class="md-subhead" ng-bind-html="'Dodany przez: ' + postCtrl.singlePost.author"></span>
+            <span class="md-subhead" ng-bind="postCtrl.singlePost.addedAt |  date : 'dd/MM/yyyy HH:mm:ss'"></span>
+            <span class="md-subhead edited" ng-if="postCtrl.singlePost.editedAt != null"
+                  ng-bind-html=" 'Ostatnia edycja: ' + (postCtrl.singlePost.editedAt |  date : 'dd/MM/yyyy HH:mm:ss')
+         + ' przez ' + (postCtrl.singlePost.editedBy)"></span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-content layout="row" layout-align="space-between">
+        <div class="md-media-xl card-media col-4">
+            <img ng-if="postCtrl.singlePost.photoPath != null" class="postPhoto" ng-src="{{postCtrl.getPhotoPath(postCtrl.singlePost)}}">
+        </div>
+        <div class="content col-8" ng-bind="postCtrl.singlePost.content"></div>
+        <!--<md-card-actions layout="column">-->
+            <!--<md-button class="md-icon-button" aria-label="Favorite">-->
+                <!--<md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>-->
+            <!--</md-button>-->
+            <!--<md-button class="md-icon-button" aria-label="Settings">-->
+                <!--<md-icon md-svg-icon="img/icons/menu.svg"></md-icon>-->
+            <!--</md-button>-->
+            <!--<md-button class="md-icon-button" aria-label="Share">-->
+                <!--<md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>-->
+            <!--</md-button>-->
+        <!--</md-card-actions>-->
+    </md-card-content>
+</md-card>

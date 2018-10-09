@@ -1,0 +1,28 @@
+{
+  "name": "demoapp",
+  "version": "1.0.0",
+  "description": "This project is a sample application demonstrating a more fully developed realistic single page angular application.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joe Eames & Jim Cooper",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "1.6.2",
+    "angular-animate": "^1.6.2",
+    "angular-aria": "^1.6.2",
+    "angular-datatables": "^0.6.2",
+    "angular-local-storage": "^0.7.1",
+    "angular-material": "^1.1.10",
+    "angular-material-data-table": "^0.10.10",
+    "body-parser": "^1.13.1",
+    "bootstrap": "^4.1.3",
+    "express": "4.13.0",
+    "jquery": "^3.3.1",
+    "popper": "^1.0.1"
+  }
+}

@@ -1,0 +1,26 @@
+
+<md-switch ng-change="requestsCtrl.getRequests()" class="md-primary" md-no-ink aria-label="Switch No Ink" ng-model="requestsCtrl.data.showAccepted">
+    Pokaż zaakceptowane = {{requestsCtrl.data.showAccepted}}
+</md-switch>
+<md-switch ng-change="requestsCtrl.getRequests()" class="md-primary" md-no-ink aria-label="Switch No Ink" ng-model="requestsCtrl.data.showRefused">
+    Pokaż odrzucone = {{requestsCtrl.data.showRefused}}
+</md-switch>
+<table class="table table-hover">
+    <thead class="thead-light">
+    <tr>
+        <th>Data prośby</th>
+        <th>Wyslana przez</th>
+        <th>Akcja</th>
+        <th ng-if="requestsCtrl.data.showAccepted === true">Data Akceptacji</th>
+        <th ng-if="requestsCtrl.data.showRefused === true">Data Odrzucenia</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="request in requestsCtrl.allRequests">
+        <td>{{request.sentAt | date : ' dd-MM-yyyy HH:mm:ss '}}</td>
+        <td>{{request.moderator}}</td>
+        <td>{{actions[request.action]}}</td>
+        <td ng-if="requestsCtrl.data.showAccepted === true">{{request.acceptanceDate | date : ' dd-MM-yyyy HH:mm:ss '}}</td>
+        <td ng-if="requestsCtrl.data.showRefused === true">{{request.refusalDate | date : ' dd-MM-yyyy HH:mm:ss '}}</td>
+    </tr>
+</table>

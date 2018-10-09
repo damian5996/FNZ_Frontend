@@ -1,0 +1,41 @@
+<div ng-cloak >
+    <div class="col-sm-8 col-sm-offset-2">
+        <div class="page-header"><h1></h1></div>
+        <!-- FORM -->
+
+
+        <form name="postForm" ng-submit="addPostCtrl.addPost()">
+            <div class="form-group">
+                <label>Your name</label>
+                <input type="text" name="name" class="form-control" ng-model="addPostCtrl.newPost.author">
+                <span ng-show="errorName">{{errorName}}</span>
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <!--<input type="text" name="username" class="form-control" ng-model="addPostCtrl.newPost.category">-->
+                <!--<span ng-show="errorUserName">{{errorUserName}}</span>-->
+                <select class="form-control" ng-model="addPostCtrl.newPost.category">
+                    <option ng-repeat="category in categories" ng-selected="category == categories[2]" class="dropdown-item"
+                            value="{{categories.indexOf(category)}}" ng-bind="category"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" name="email" class="form-control" ng-model="addPostCtrl.newPost.title">
+                <span ng-show="errorEmail">{{errorEmail}}</span>
+            </div>
+            <div class="form-group">
+                <label>Content</label>
+                <input type="text" name="email" class="form-control" ng-model="addPostCtrl.newPost.content">
+                <span ng-show="errorEmail">{{errorEmail}}</span>
+            </div>
+            <div class="form-group">
+                <label>Photo</label>
+                <input type="text" name="email" class="form-control" ng-model="addPostCtrl.newPost.photoPath">
+                <span ng-show="errorEmail">{{errorEmail}}</span>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
