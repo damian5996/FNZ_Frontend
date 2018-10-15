@@ -4,8 +4,20 @@ var fnzApp = angular.module('fnzApp', ['ngRoute', 'ngSanitize', 'ngMaterial', 'n
     .config(function($routeProvider){
         $routeProvider
             .when('/news',{
-            templateUrl: 'templates/AllPosts.html',
-            controller: 'AllPostsController as allPostsCtrl'
+                templateUrl: 'templates/AllPosts.html',
+                controller: 'AllPostsController as allPostsCtrl'
+            })
+            .when('/foundationLife',{
+                templateUrl: 'templates/AllPosts.html',
+                controller: 'AllPostsController as allPostsCtrl'
+            })
+            .when('/dogsAdoption',{
+                templateUrl: 'templates/AllPosts.html',
+                controller: 'AllPostsController as allPostsCtrl'
+            })
+            .when('/catsAdoption',{
+                templateUrl: 'templates/AllPosts.html',
+                controller: 'AllPostsController as allPostsCtrl'
             })
             .when('/posts/:postId', {
                 templateUrl: 'templates/PostDetails.html',
@@ -35,6 +47,7 @@ fnzApp.run(function($rootScope, $window){
     $rootScope.firstName = $window.localStorage.getItem('firstName');
     $rootScope.lastName = $window.localStorage.getItem('lastName');
     $rootScope.fullName = $rootScope.firstName + ' ' + $rootScope.lastName;
+    $rootScope.category = null;
     //$rootScope.loggedIn = false;
     $rootScope.alertClosed = false;
     $rootScope.successMessage = null;

@@ -1,12 +1,16 @@
 'use strict';
 
 fnzApp.controller('AllPostsController',
-    function AllPostsController(postData, $window){
+    function AllPostsController(postData, $rootScope){
         const vm = this;
+        console.log($rootScope);
         vm.data = {
             sort: 'AddedAt',
-            ascending: true
+            ascending: true,
+            category: $rootScope.category
         };
+        console.log($rootScope.category);
+        console.log(vm.data.category);
         postData.getAllPosts(vm.data,
             function (allPosts){
                 vm.allPosts = allPosts.data.object.posts;

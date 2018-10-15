@@ -19,9 +19,28 @@ fnzApp.factory("postData", function($http){
                     'limit': data.limit,
                     'sort': data.sort,
                     'query': data.query,
+                    'ascending': data.ascending,
+                    'category': data.category
+                }
+            ).then(function(response){
+                success(response);
+            }).catch(function(response){
+                error(response);
+            });
+        },
+        getFoundationLifePosts: function(data, success, error){
+            $http.post(
+                "http://localhost:57725/Posts",
+                {
+                    'pageNumber': data.pageNumber,
+                    'limit': data.limit,
+                    'sort': data.sort,
+                    'query': data.query,
                     'ascending': data.ascending
                 }
             ).then(function(response){
+                console.log(response);
+                response.data.object.posts.where
                 success(response);
             }).catch(function(response){
                 error(response);

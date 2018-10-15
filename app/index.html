@@ -46,16 +46,16 @@
         <div class="col-3">
                 <md-list>
                     <md-list-item class="">
-                        <md-button href="#!/news" flex>Aktualności</md-button>
+                        <md-button ng-click="$root.category=null" href="#!/news" flex>Aktualności</md-button>
                     </md-list-item>
                     <md-list-item>
-                        <md-button flex>Z życia fundacji</md-button>
+                        <md-button ng-click="$root.category=4" href="#!/foundationLife" flex>Z życia fundacji</md-button>
                     </md-list-item>
                     <md-list-item>
-                        <md-button flex>Psy do adopcji</md-button>
+                        <md-button ng-click="$root.category=0" href="#!/dogsAdoption" flex>Psy do adopcji</md-button>
                     </md-list-item>
                     <md-list-item>
-                        <md-button flex>Koty do adopcji</md-button>
+                        <md-button ng-click="$root.category=1" href="#!/catsAdoption" flex>Koty do adopcji</md-button>
                     </md-list-item>
                     <md-list-item>
                         <md-button flex>Spełnione marzenia</md-button>

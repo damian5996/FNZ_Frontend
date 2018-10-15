@@ -3,6 +3,8 @@
     <!--<pre ng-bind="allPostsCtrl.currentPage | json"></pre>-->
     <!--<pre ng-bind="allPostsCtrl.totalPageCount | json"></pre>-->
     <!--<pre ng-bind="allPostsCtrl.singlePost | json"></pre>-->
+    <button ng-click="allPostsCtrlOutside.data.category=0;"></button>
+    <pre>{{allPostsCtrlOutside.data.category | json}}</pre>
     <div layout="row">
     <md-card flex>
         <md-card-content>
@@ -15,13 +17,6 @@
                     <md-option value="Author">Autor</md-option>
                 </md-select>
             </md-input-container>
-            <!--<md-input-container>-->
-                <!--<label>Sortuj</label>-->
-                <!--<md-select ng-model="allPostsCtrl.data.ascending">-->
-                    <!--<md-option value="true">Rosnąco</md-option>-->
-                    <!--<md-option value="false">Malejąco</md-option>-->
-                <!--</md-select>-->
-            <!--</md-input-container>-->
         </md-card-content>
     </md-card>
         <md-card flex>
@@ -48,13 +43,12 @@
         </md-card>
     </div>
     <button onclick="location.href='#!/addPost'" type="button" class="btn btn-primary btn-block">Dodaj post</button>
-    <!--<div ng-repeat="singlePost in allPostsCtrl.allPosts | orderBy: allPostsCtrl.data.sort : allPostsCtrl.data.ascending-->
-        <!--| filter:allPostsCtrl.query">-->
         <div ng-repeat="singlePost in allPostsCtrl.allPosts">
         <md-card>
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline" ng-bind="singlePost.title"></span>
+                    <div><button ng-if="$root.category==0">Adoptuj mnie</button></div>
                     <span class="md-subhead" ng-bind-html="'Dodany przez: ' + singlePost.author"></span>
                     <span class="md-subhead" ng-bind="singlePost.addedAt |  date : 'dd/MM/yyyy HH:mm:ss'"></span>
                     <span class="md-subhead edited" ng-if="singlePost.editedAt != null"
